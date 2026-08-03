@@ -1097,9 +1097,9 @@ export default function Home() {
                   </button>
                 </li>
                 <li>
-                  <a href="mailto:jasabuangpuingammarendung@gmail.com" className="text-[10px] sm:text-xs text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1.5 font-bold break-all">
+                  <a href="mailto:info@jasabuangpuingbintaro.com" className="text-[10px] sm:text-xs text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1.5 font-bold break-all">
                     <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    jasabuangpuingammarendung@gmail.com
+                    info@jasabuangpuingbintaro.com
                   </a>
                 </li>
               </ul>

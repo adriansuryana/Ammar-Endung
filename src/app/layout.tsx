@@ -90,7 +90,7 @@ export default function RootLayout({
     "image": "https://www.jasabuangpuingbintaro.com/hero.webp",
     "description": "Jasa Pembuangan Puing Proyek, Angkut Barang Pindahan, Bongkar Bangunan, dan Jasa Angkut Tanah Urugan Murah dan Cepat 24 Jam di Jakarta, Bintaro, Tangerang, dan sekitarnya.",
     "telephone": "+6288985185962",
-    "email": "jasabuangpuingammarendung@gmail.com",
+    "email": "info@jasabuangpuingbintaro.com",
     "priceRange": "Rp",
     "address": {
       "@type": "PostalAddress",
