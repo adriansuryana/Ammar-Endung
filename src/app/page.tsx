@@ -123,7 +123,7 @@ const services = [
     color: "#F62440",
     title: "Buang Puing",
     subtitle: "Renovasi & Bongkaran",
-    price: "Rp 250rb / rit",
+    price: "Rp 300rb / rit",
     tags: ["Bata & Beton", "Genteng & Kayu", "Sisa Aspal"],
     desc: "Sisa material renovasi—pecahan bata, beton, genteng lama—kami angkut sampai bersih dari lokasi Anda.",
   },
@@ -416,7 +416,7 @@ export default function Home() {
           </a>
 
           <nav className="hidden md:flex items-center gap-10 text-[11px] md:text-[12px] font-black uppercase tracking-wider">
-            {["Layanan", "Keunggulan", "Area", "FAQ"].map((item) => (
+            {["Layanan", "Keunggulan", "Galeri", "Area", "FAQ"].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`}
                 className="transition-colors duration-200 text-slate-600 hover:text-red-500">
                 {item}
@@ -451,8 +451,15 @@ export default function Home() {
       <section className="relative min-h-[92vh] flex flex-col justify-center pt-24 pb-12 px-4 overflow-hidden md:py-40 md:pb-28 md:min-h-screen">
         {/* Hero image full-cover dengan light cinematic overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/hero.webp')", opacity: 0.75 }} />
+          <Image
+            src="/hero.webp"
+            alt="Jasa Buang Puing Bintaro Tangerang Jakarta - Ammar Endung"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ opacity: 0.75 }}
+          />
           {/* Light cinematic gradient overlay */}
           <div className="absolute inset-0"
             style={{
@@ -619,6 +626,145 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="keunggulan" className="py-20 px-4 scroll-mt-20 relative" style={{ background: 'white' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at bottom left, rgba(246,36,64,0.04) 0%, transparent 60%)' }} />
+        
+        <div className="relative max-w-lg mx-auto md:max-w-5xl">
+          <div data-reveal="up" className="mb-10 md:mb-16 md:text-center">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Keunggulan</span>
+            <h2 className="text-2xl sm:text-3xl font-black mt-1 text-slate-900 leading-tight md:text-4xl">
+              Kenapa Pilih Ammar Endung?
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {features.map((f, i) => (
+              <div key={i} data-reveal="up" className={`delay-${i + 1} flex items-start gap-4 p-4 rounded-2xl bg-slate-50 transition-all hover:bg-slate-100`}
+                style={{ border: '1px solid rgba(0,0,0,0.04)' }}>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                   style={{ background: '#fff0f2', color: '#F62440' }}>
+                  <div className="w-5 h-5">{f.icon}</div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-800 mb-1">{f.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 relative" style={{ background: '#f1f5f9' }}>
+        <div className="max-w-lg mx-auto md:max-w-5xl">
+          <div data-reveal="up" className="mb-10 md:mb-16 md:text-center">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Cara Pemesanan</span>
+            <h2 className="text-2xl sm:text-3xl font-black mt-1 text-slate-900 leading-tight md:text-4xl">
+              4 Langkah Mudah Pesan Layanan Kami
+            </h2>
+          </div>
+
+          <div className="space-y-0 md:space-y-0 md:grid md:grid-cols-4 md:gap-6">
+            {[
+              { step: "01", title: "Hubungi Admin Kami", desc: "Chat WhatsApp atau telepon langsung. Jelaskan kebutuhan Anda.", delay: "delay-1" },
+              { step: "02", title: "Kirim Foto & Estimasi", desc: "Foto puing/barang dikirim ke WA, kami langsung beri estimasi harga.", delay: "delay-2" },
+              { step: "03", title: "Armada Langsung Meluncur", desc: "Setelah sepakat harga & jadwal, tim dan armada segera berangkat.", delay: "delay-3" },
+              { step: "04", title: "Beres, Baru Bayar", desc: "Selesai angkut, lokasi rapi. Pembayaran dilakukan setelah pekerjaan tuntas.", delay: "delay-4" },
+            ].map((item, idx, arr) => (
+              <div key={idx} data-reveal="up" className={item.delay + " flex gap-4 md:flex-col md:gap-3 relative"}>
+                {/* Vertical connector line (mobile) */}
+                {idx < arr.length - 1 && (
+                  <div className="absolute left-[19px] top-10 bottom-0 w-px bg-slate-200 md:hidden" />
+                )}
+                {/* Horizontal connector line (desktop) */}
+                {idx < arr.length - 1 && (
+                  <div className="hidden md:block absolute left-10 right-[-24px] top-5 h-px bg-slate-300 z-0" />
+                )}
+                
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0 z-10"
+                  style={{ background: '#F62440' }}>
+                  {item.step}
+                </div>
+                <div className="pb-8 md:pb-0">
+                  <h3 className="text-sm font-bold text-slate-800 mb-1">{item.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button onClick={() => openWA("Pesan Layanan")}
+            className="w-full py-4 rounded-2xl text-white font-extrabold text-sm flex items-center justify-center gap-2.5 mt-8 md:mt-12" style={{ background: '#F62440' }}>
+            <div className="w-5 h-5">{icons.whatsapp}</div>
+            Mulai Pesan Sekarang
+          </button>
+        </div>
+      </section>
+
+      <section id="galeri" className="py-20 px-4 scroll-mt-20" style={{ background: 'white' }}>
+        <div className="max-w-lg mx-auto md:max-w-5xl">
+          <div data-reveal="up" className="mb-10 md:mb-16 md:text-center">
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Dokumentasi</span>
+            <h2 className="text-2xl sm:text-3xl font-black mt-1 text-slate-900 leading-tight md:text-4xl">
+              Galeri Proyek & Kegiatan Kami
+            </h2>
+            <p className="text-xs text-slate-500 mt-2">Dokumentasi riil pekerjaan tim Ammar Endung di lapangan.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { src: "/galeri_kerja1.jpg", title: "Pembersihan Puing", desc: "Proses pembersihan sisa material renovasi dalam karung siap angkut." },
+              { src: "/galeri_kerja2.jpg", title: "Pengangkutan Tanah", desc: "Armada truk memindahkan tanah merah urugan untuk proyek pengurugan." },
+              { src: "/galeri_kerja3.jpg", title: "Lahan Bersih 100%", desc: "Kondisi akhir lokasi setelah puing diangkut bersih tanpa sisa." }
+            ].map((item, idx) => (
+              <div key={idx} data-reveal="scale" className={`delay-${idx + 1} group relative rounded-2xl overflow-hidden shadow-md bg-white border border-slate-200/50`}>
+                <div className="aspect-[4/3] w-full relative overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.title + " Jasa Buang Puing Ammar Endung"}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent opacity-90 transition-opacity" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <h3 className="text-sm font-black mb-1 text-white">{item.title}</h3>
+                  <p className="text-[10px] text-slate-200/90 leading-relaxed font-bold">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 relative overflow-hidden" style={{ background: '#f1f5f9' }}>
+        <div className="px-4 max-w-lg mx-auto mb-8 md:max-w-5xl md:mb-12">
+          <span data-reveal="up" className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Testimoni</span>
+          <div className="flex items-end justify-between mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight md:text-4xl">
+              Kata Pelanggan Kami
+            </h2>
+            <div className="flex gap-2 md:hidden">
+              <button onClick={() => scrollReviews("left")} className="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-100">
+                <svg className="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+              <button onClick={() => scrollReviews("right")} className="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-100">
+                <svg className="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div ref={reviewsRef} className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:max-w-5xl md:mx-auto md:overflow-visible">
+          {reviews.map((r, i) => (
+            <div key={i} data-reveal="up" className={`delay-${i + 1} snap-start flex-shrink-0 md:snap-none md:w-full`}>
+              <ReviewCard review={r} />
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="form-pesan" className="py-20 px-4 scroll-mt-20 relative" style={{ background: 'white' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at top right, rgba(246,36,64,0.05) 0%, transparent 60%)' }} />
@@ -728,108 +874,6 @@ export default function Home() {
               </button>
             </form>
           </div>
-        </div>
-      </section>
-
-      <section id="keunggulan" className="py-20 px-4 scroll-mt-20 relative" style={{ background: 'white' }}>
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at bottom left, rgba(246,36,64,0.04) 0%, transparent 60%)' }} />
-        
-        <div className="relative max-w-lg mx-auto md:max-w-5xl">
-          <div data-reveal="up" className="mb-10 md:mb-16 md:text-center">
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Keunggulan</span>
-            <h2 className="text-2xl sm:text-3xl font-black mt-1 text-slate-900 leading-tight md:text-4xl">
-              Kenapa Pilih Ammar Endung?
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {features.map((f, i) => (
-              <div key={i} data-reveal="up" className={`delay-${i + 1} flex items-start gap-4 p-4 rounded-2xl bg-slate-50 transition-all hover:bg-slate-100`}
-                style={{ border: '1px solid rgba(0,0,0,0.04)' }}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                   style={{ background: '#fff0f2', color: '#F62440' }}>
-                  <div className="w-5 h-5">{f.icon}</div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-800 mb-1">{f.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-4 relative" style={{ background: '#f1f5f9' }}>
-        <div className="max-w-lg mx-auto md:max-w-5xl">
-          <div data-reveal="up" className="mb-10 md:mb-16 md:text-center">
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Cara Pemesanan</span>
-            <h2 className="text-2xl sm:text-3xl font-black mt-1 text-slate-900 leading-tight md:text-4xl">
-              4 Langkah Mudah Pesan Layanan Kami
-            </h2>
-          </div>
-
-          <div className="space-y-0 md:space-y-0 md:grid md:grid-cols-4 md:gap-6">
-            {[
-              { step: "01", title: "Hubungi Admin Kami", desc: "Chat WhatsApp atau telepon langsung. Jelaskan kebutuhan Anda.", delay: "delay-1" },
-              { step: "02", title: "Kirim Foto & Estimasi", desc: "Foto puing/barang dikirim ke WA, kami langsung beri estimasi harga.", delay: "delay-2" },
-              { step: "03", title: "Armada Langsung Meluncur", desc: "Setelah sepakat harga & jadwal, tim dan armada segera berangkat.", delay: "delay-3" },
-              { step: "04", title: "Beres, Baru Bayar", desc: "Selesai angkut, lokasi rapi. Pembayaran dilakukan setelah pekerjaan tuntas.", delay: "delay-4" },
-            ].map((item, idx, arr) => (
-              <div key={idx} data-reveal="up" className={item.delay + " flex gap-4 md:flex-col md:gap-3 relative"}>
-                {/* Vertical connector line (mobile) */}
-                {idx < arr.length - 1 && (
-                  <div className="absolute left-[19px] top-10 bottom-0 w-px bg-slate-200 md:hidden" />
-                )}
-                {/* Horizontal connector line (desktop) */}
-                {idx < arr.length - 1 && (
-                  <div className="hidden md:block absolute left-10 right-[-24px] top-5 h-px bg-slate-300 z-0" />
-                )}
-                
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0 z-10"
-                  style={{ background: '#F62440' }}>
-                  {item.step}
-                </div>
-                <div className="pb-8 md:pb-0">
-                  <h3 className="text-sm font-bold text-slate-800 mb-1">{item.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <button onClick={() => openWA("Pesan Layanan")}
-            className="w-full py-4 rounded-2xl text-white font-extrabold text-sm flex items-center justify-center gap-2.5 mt-8 md:mt-12" style={{ background: '#F62440' }}>
-            <div className="w-5 h-5">{icons.whatsapp}</div>
-            Mulai Pesan Sekarang
-          </button>
-        </div>
-      </section>
-
-      <section className="py-20 relative overflow-hidden" style={{ background: 'white' }}>
-        <div className="px-4 max-w-lg mx-auto mb-8 md:max-w-5xl md:mb-12">
-          <span data-reveal="up" className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F62440' }}>Testimoni</span>
-          <div className="flex items-end justify-between mt-1">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight md:text-4xl">
-              Kata Pelanggan Kami
-            </h2>
-            <div className="flex gap-2 md:hidden">
-              <button onClick={() => scrollReviews("left")} className="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-100">
-                <svg className="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
-              </button>
-              <button onClick={() => scrollReviews("right")} className="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-100">
-                <svg className="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div ref={reviewsRef} className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:max-w-5xl md:mx-auto md:overflow-visible">
-          {reviews.map((r, i) => (
-            <div key={i} data-reveal="up" className={`delay-${i + 1} snap-start flex-shrink-0 md:snap-none md:w-full`}>
-              <ReviewCard review={r} />
-            </div>
-          ))}
         </div>
       </section>
 
@@ -1051,6 +1095,12 @@ export default function Home() {
                     <div className="w-3.5 h-3.5">{icons.whatsapp}</div>
                     Chat Admin 24 Jam
                   </button>
+                </li>
+                <li>
+                  <a href="mailto:jasabuangpuingammarendung@gmail.com" className="text-[10px] sm:text-xs text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1.5 font-bold break-all">
+                    <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    jasabuangpuingammarendung@gmail.com
+                  </a>
                 </li>
               </ul>
             </div>
