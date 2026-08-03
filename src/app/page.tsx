@@ -369,6 +369,51 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // ── Protection from Inspect Element / Copy-paste / Drag-drop
+  useEffect(() => {
+    // 1. Disable Right Click
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    // 2. Disable Keyboard Shortcuts (F12, Ctrl+Shift+I/J/C, Ctrl+U, Ctrl+S)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+      if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C" || e.key === "i" || e.key === "j" || e.key === "c")) {
+        e.preventDefault();
+      }
+      if (e.ctrlKey && (e.key === "U" || e.key === "u")) {
+        e.preventDefault();
+      }
+      if (e.ctrlKey && (e.key === "S" || e.key === "s")) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    // 3. Disable Text Selection
+    const handleSelectStart = (e: Event) => {
+      e.preventDefault();
+    };
+    document.addEventListener("selectstart", handleSelectStart);
+
+    // 4. Disable Image Dragging
+    const handleDragStart = (e: Event) => {
+      e.preventDefault();
+    };
+    document.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("selectstart", handleSelectStart);
+      document.removeEventListener("dragstart", handleDragStart);
+    };
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -387,7 +432,7 @@ export default function Home() {
   };
 
   return (
-    <div id="beranda" className="relative min-h-screen text-slate-800 pb-24 md:pb-0" style={{ background: '#f8fafc' }}>
+    <div id="beranda" className="relative min-h-screen text-slate-800 pb-24 md:pb-0 select-none" style={{ background: '#f8fafc' }}>
 
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full animate-orb"
